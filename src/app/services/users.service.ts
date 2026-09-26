@@ -11,19 +11,7 @@ export class UsersService {
     { id: 3, name: 'Carlos', email: 'carlos@test.com', active: true }
   ];
 
-  async getUsers(): Promise<User[]> {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(this.users), 500);
-    });
-  }
-
-  async getActiveUsers(): Promise<User[]> {
-    const users = await this.getUsers();
-    return users.filter(u => u.active);
-  }
-
-  async getUserById(id: number): Promise<User | undefined> {
-    const users = await this.getUsers();
-    return users.find(u => u.id === id);
+  getActiveUsers(): User[] {
+    return this.users.filter(u => u.active);
   }
 }
