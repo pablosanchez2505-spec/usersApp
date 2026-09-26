@@ -5,13 +5,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <!-- Muestra el círculo de carga si 'loading' es true -->
-  <div *ngIf="loading" style="text-align: center; margin-top: 20px;">
-    <ion-spinner name="crescent"></ion-spinner>
-  </div>
-
-  <!-- Muestra la lista cuando ya ha terminado de cargar -->
-  <ion-list *ngIf="!loading">
+  <ion-list>
     <ion-item *ngFor="let user of users">
       <ion-label>
         <h2>{{ user.name }}</h2>

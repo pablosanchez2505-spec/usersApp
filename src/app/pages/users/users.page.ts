@@ -8,29 +8,15 @@ import { User } from '../../models/user.model';
   templateUrl: './users.page.html',
   styleUrls: ['./users.page.scss'],
   standalone: true,
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class UsersPage implements OnInit {
   users: User[] = [];
-  loading = false;
 
   constructor(private usersService: UsersService) {}
 
-  async ngOnInit() {
-    await this.loadUsers();
-  }
-
-  async loadUsers() {
-    try {
-      this.loading = true;
-      this.users = await this.usersService.getActiveUsers();
-    } catch (error) {
-      console.error('Error:', error);
-    } finally {
-      this.loading = false;
-    }
+  ngOnInit() {
+    this.users = this.usersService.getActiveUsers();
   }
 }
